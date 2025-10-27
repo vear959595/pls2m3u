@@ -23,6 +23,16 @@ func main() {
 	if rawbytes, err := os.ReadFile(os.Args[1]); err != nil {
 		log.Fatal(err)
 	} else {
-		fmt.Println(string(rawbytes))
+		fmt.Printf("%s", string(rawbytes))
+	}
+}
+
+func readPlsPlaylist(data string) (songs []Song) {
+	var song Song
+	for _, line := range strings.Split(data, "\n") {
+		line = strings.TrimSpace(line)
+		if line == "" || strings.HasPrefix(line, "[playlist]") {
+			continue
+		}
 	}
 }
